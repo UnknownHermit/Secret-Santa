@@ -6,5 +6,5 @@ $santa->populateFromCsv();
 $santa->allocateSantas();
 $table = $santa->getAllocationsTable();
 $subtitle = "Story 1";
-require_once("views/view_santas.html");
+require_once($_SERVER["DOCUMENT_ROOT"]."/views/view_santas.html");
 ?>
