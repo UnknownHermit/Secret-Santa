@@ -35,7 +35,7 @@ class SecretSanta{
      */
     public function allocateSantas(){
         // Make sure we actually have participants
-        if(empty($participants) || sizeof($this->participants) == 1){
+        if(empty($this->participants) || sizeof($this->participants) == 1){
             return false;
         }
         // Make 2 duplicate arrays. We loop through the givers and assign them someone from the reciever array, then remove that reciever from the array
@@ -70,7 +70,7 @@ class SecretSanta{
 
     public function allocateSantasNotRelated(){
         // Make sure we actually have participants
-        if(empty($participants) || sizeof($this->participants) == 1){
+        if(empty($this->participants) || sizeof($this->participants) == 1){
             return false;
         }
          // Make 2 duplicate arrays. We loop through the givers and assign them someone from the reciever array, then remove that reciever from the array
@@ -145,9 +145,9 @@ class SecretSanta{
      */
     private function stringIsEmpty($string){
         if(strlen($string) > 0 && strlen(trim($string)) == 0){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
@@ -186,6 +186,7 @@ class SecretSanta{
         $errors = Array();
         $status = Array();
         // We must have all 3 fields
+        print $forename;
         if($this->stringIsEmpty($forename)){
             $errors[] = "Forename is empty";
         }
