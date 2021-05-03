@@ -78,7 +78,6 @@ class SecretSanta{
         $recievers = $this->participants;
         foreach($givers as $k => $giver){
             $isValid = false;
-            $c = 0;
             // Build a temporary array of valid recipients with a different forename as this version doesn't allow for same family secret santas
             $tmpArray = Array();
             foreach($recievers as $rk => $reciever){
@@ -100,6 +99,7 @@ class SecretSanta{
                     // There are no non-family members available, or everyone else is paired up so find a random non-family from the list and swap
                     if(empty($tmpArray) || sizeof($recievers) == 1){
                         $differentSurname = false;
+                        $c = 0;
                         while(!$differentSurname){
                             $randomKey = array_rand($this->santaMatches,1);
                             if($this->santaMatches[$randomKey]["surname"] != $giver["surname"]){
@@ -109,10 +109,11 @@ class SecretSanta{
                                 $differentSurname = true;
                                 $isValid = true;
                             }
+                            $c++;
                         }  
                     }
                 }
-                $c++;
+                
             }
         }
         return true;
